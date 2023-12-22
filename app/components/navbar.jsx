@@ -3,12 +3,12 @@ import Link from "next/link";
 const links = [
     { href: "/", text: "Home", span: "home"},
     { href: "/collection", text: "Collection", span: "collection"},
-    { href: "/upload", text: "Add", span: "upload"},
+    { href: "/upload", text: "Upload", span: "upload"},
 ];
 
 const Navbar = () => {
     return (
-        <div className="container mx-auto mb-2 border-teal-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+        <div className="w-full mx-auto mb-2 border-teal-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
             <nav>
                 <ul className="flex justify-center py-5 rounded-sm bg-opacity-0">
                     {links.map((l) => (
