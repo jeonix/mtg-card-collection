@@ -23,9 +23,9 @@ const HomePage = () => {
               ...card,
               name: cardData.name,
               set: cardData.set_name,
-              tcgId: cardData.tcgplayer_id,
-              cardMktId: cardData.cardmarket_id,
-              releaseDate: cardData.released_at,
+              tcgplayer_id: cardData.tcgplayer_id,
+              cardmarket_id: cardData.cardmarket_id,
+              released_at: cardData.released_at,
             };
 
             if (cardData.prices.usd === null) {
@@ -59,6 +59,26 @@ const HomePage = () => {
     }
   };
 
+  const addToDatabase = async () => {
+    try {
+      const response = await fetch('api/addCards', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify({ cards }),
+      });
+  
+      if (response.ok) {
+        console.log('Cards added to the database successfully!');
+      }
+      else {
+        console.error('Failed to add cards to the database.');
+      }
+    }
+    catch (error) {
+      console.error('Error adding cards to the database:', error);
+    }
+  };
+  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -70,11 +90,6 @@ const HomePage = () => {
               return {
                 name: row[headers.indexOf('Card')],
                 set: row[headers.indexOf('Set')],
-                price: 0,
-                message: null,
-                tcgId: null,
-                cardMktId: null,
-                releaseDate: null,
               };
             });
   
@@ -105,14 +120,15 @@ const HomePage = () => {
       {uploadedFile && (
         <div className='lg:w-5/8 p-1 m-2 justify-between place-items-end'>
         <h1 className='w-full text-center font-bold text-2xl p-1 m-0'>Card List</h1>
+        <button onClick={addToDatabase}>Add All Cards to Database</button>
         <h2 className='font-bold text-lg'>Total Value: ${totalValue.toFixed(2)}</h2>
         <ol className='flex-container'>
           {cards.map((card) => (
             <li className='p-2 m-2 border-solid rounded-xl border-2 md' key={card.name}>
               <h3>{card.name.replace(/-/g, ' ')} - {card.set} - ${card.price}</h3>
-              <p>TCG Player ID: {card.tcgId}</p>
-              <p>Card Market ID: {card.cardMktId}</p>
-              <p>Release Date: {card.releaseDate}</p>
+              <p>TCG Player ID: {card.tcgplayer_id}</p>
+              <p>Card Market ID: {card.cardmarket_id}</p>
+              <p>Release Date: {card.released_at}</p>
             </li>
           ))}
         </ol>
