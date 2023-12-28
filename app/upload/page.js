@@ -1,9 +1,12 @@
-"use client";
+'use client'
+ 
+import { useRouter } from 'next/navigation'
 import { useState } from 'react';
 import Papa from 'papaparse';
 import axios from 'axios';
 
 const HomePage = () => {
+  const router = useRouter();
   const [uploadedFile, setUploadedFile] = useState(null);
   const [cards, setCards] = useState([]);
   const [totalValue, setTotalValue] = useState(0);
@@ -69,6 +72,7 @@ const HomePage = () => {
   
       if (response.ok) {
         console.log('Cards added to the database successfully!');
+        router.push('/collection');
       }
       else {
         console.error('Failed to add cards to the database.');
@@ -120,7 +124,7 @@ const HomePage = () => {
       {uploadedFile && (
         <div className='lg:w-5/8 p-1 m-2 justify-between place-items-end'>
         <h1 className='w-full text-center font-bold text-2xl p-1 m-0'>Card List</h1>
-        <button onClick={addToDatabase}>Add All Cards to Database</button>
+        <button className='p-1 m-1 border-solid rounded-lg border-2' onClick={addToDatabase}>Add All Cards to Database</button>
         <h2 className='font-bold text-lg'>Total Value: ${totalValue.toFixed(2)}</h2>
         <ol className='flex-container'>
           {cards.map((card) => (

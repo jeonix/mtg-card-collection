@@ -10,6 +10,7 @@ datasource db {
 
 model Card {
   id            Int     @id @default(autoincrement())
+  quantity      Int
   name          String
   set           String
   released_at   String?
