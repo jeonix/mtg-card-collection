@@ -4,6 +4,7 @@ const links = [
     { href: "/", text: "Home", span: "home"},
     { href: "/collection", text: "Collection", span: "collection"},
     { href: "/upload", text: "Upload", span: "upload"},
+    { href: "/sets", text: "Find Cards by Set", span: "sets"},
 ];
 
 const Navbar = () => {
