@@ -9,14 +9,15 @@ datasource db {
 }
 
 model Card {
-  id            Int     @id @default(autoincrement())
-  quantity      Int
-  name          String
-  set           String
-  released_at   String?
-  cardmarket_id Int
-  tcgplayer_id  Int
-  price         Decimal? @db.Decimal(9, 2)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                Int     @id @default(autoincrement())
+  quantity          Int
+  name              String
+  set               String
+  collector_number  String
+  released_at       String?
+  cardmarket_id     Int
+  tcgplayer_id      Int
+  price             Decimal? @db.Decimal(9, 2)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }

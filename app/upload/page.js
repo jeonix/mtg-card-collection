@@ -29,6 +29,7 @@ const HomePage = () => {
               tcgplayer_id: cardData.tcgplayer_id,
               cardmarket_id: cardData.cardmarket_id,
               released_at: cardData.released_at,
+              collector_number: cardData.collector_number,
             };
 
             if (cardData.prices.usd === null) {
@@ -128,7 +129,7 @@ const HomePage = () => {
         <h2 className='font-bold text-lg'>Total Value: ${totalValue.toFixed(2)}</h2>
         <ol className='flex-container'>
           {cards.map((card) => (
-            <li className='p-2 m-2 border-solid rounded-xl border-2 md' key={card.name}>
+            <li className='p-2 m-2 border-solid border-red-400 rounded-xl border-2 md' key={card.name}>
               <h3>{card.name.replace(/-/g, ' ')} - {card.set} - ${card.price}</h3>
               <p>TCG Player ID: {card.tcgplayer_id}</p>
               <p>Card Market ID: {card.cardmarket_id}</p>

@@ -9,7 +9,7 @@ const links = [
 
 const Navbar = () => {
     return (
-        <div className="w-full mx-auto mb-2 border-teal-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+        <div className="w-full mx-auto mb-2 border-teal-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 relative">
             <nav>
                 <ul className="flex justify-center py-5 rounded-sm bg-opacity-0">
                     {links.map((l) => (
